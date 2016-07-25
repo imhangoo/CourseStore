@@ -1,0 +1,60 @@
+.signup-form {
+	margin-top:150px;
+	width:400px;
+}
+.cart-list{
+	margin-top:100px;
+	width:800px;
+ }
+.cart-list td,th{
+	text-align:center;
+}
+.cart-list #total{
+	text-align:right;
+	font-size:20px;
+}
+.cart-list a{
+	float:right;
+}
+
+.signup-form button{
+	display:block;
+	margin:0 auto;
+}
+
+.head_nav {
+	line-height:50px;
+	float:right;
+	color:#ffffff;
+	font-size:16px;
+}
+
+.head_nav a {
+	text-decoration:underline;
+	color:#ffffff;
+}
+
+.head_nav a:hover{
+	color:#808080;
+}
+
+a.btn:hover{
+	color:#ffffff;
+	
+}
+
+.course-detail{
+	margin-top:110px;
+}
+
+.course-detail ul{
+	line-height:3em;
+	padding: 0;
+	list-style-type: none;
+	font-size:20px;
+}
+
+.course-detail a{
+	position:relative;
+	top:90px;
+}
