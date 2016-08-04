@@ -17,6 +17,7 @@ List<Course> courseList = courseManager.getCourseList();
     </div>
 </div>
 
+
 <!-- Recently Added -->
 
 <div class="container">
