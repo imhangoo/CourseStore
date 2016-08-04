@@ -1,12 +1,21 @@
 package com.imhangoo.coursestore.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderHeader {
 	private int id;
 	private int customerID;
 	private Date date;
+	private List<OrderDetail> details;
 	
+	
+	public List<OrderDetail> getDetails() {
+		return details;
+	}
+	public void setDetails(List<OrderDetail> details) {
+		this.details = details;
+	}
 	public int getId() {
 		return id;
 	}
