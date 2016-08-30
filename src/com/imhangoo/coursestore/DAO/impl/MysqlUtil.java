@@ -8,12 +8,12 @@ import java.sql.SQLException;
 
 public class MysqlUtil {
 	// get Mysql connection
-	protected Connection getConnection() {
+	public Connection getConnection() {
 		Connection conn = null;
-		String host = "localhost:3306";
+		String host = "mysql.cyuojdjiewi4.us-west-2.rds.amazonaws.com:3306";
 		String database = "coursestore";
 		String user = "imhangoo";
-		String password = "8395";
+		String password = "83950089";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager

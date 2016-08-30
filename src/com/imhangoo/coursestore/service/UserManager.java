@@ -29,12 +29,8 @@ public class UserManager {
 	}
 	
 	public User validate(String name, String password){
-		User user = new User(name,password,null);
-		if(dao.validate(user)){
-			return user;
-		}else{
-			return null;
-		}
+		User user = dao.validate(name, password);
+		return user;
 	}
 	
 	public List<User> getUserList(){

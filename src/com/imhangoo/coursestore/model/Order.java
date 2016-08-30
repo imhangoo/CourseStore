@@ -3,18 +3,20 @@ package com.imhangoo.coursestore.model;
 import java.util.Date;
 import java.util.List;
 
-public class OrderHeader {
+public class Order {
 	private int id;
 	private int customerID;
 	private Date date;
-	private List<OrderDetail> details;
+	private List<OrderItem> items;
 	
-	
-	public List<OrderDetail> getDetails() {
-		return details;
+	public Order(){
+		date = new Date();
+		
 	}
-	public void setDetails(List<OrderDetail> details) {
-		this.details = details;
+	
+	public Order(int id){
+		this.id = id;
+		date = new Date();
 	}
 	public int getId() {
 		return id;
@@ -34,6 +36,14 @@ public class OrderHeader {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public List<OrderItem> getItems() {
+		return items;
+	}
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
+	}
+	
+	
 	
 	
 

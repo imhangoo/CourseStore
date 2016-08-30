@@ -57,7 +57,6 @@ Cart cart = (Cart)session.getAttribute("cart");
             </ul>
             <% if(user==null && admin==null){%>
             <form action="login" class="navbar-form navbar-right" role="form">
-            <input type="hidden" name="submit" value="submit" >
                 <div class="form-group">
                     <input type="text" name="name" class="form-control" placeholder="User Name">
                 </div>

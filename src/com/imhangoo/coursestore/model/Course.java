@@ -7,12 +7,14 @@ public class Course {
 	private float price;
 	private String pic;
 	private String desc;
-	private int orderCount;
 	
 	
 	public Course() {
 	}
 	
+	public Course(int id){
+		this.id = id;
+	}
 	
 	public int getId() {
 		return id;
@@ -60,15 +62,7 @@ public class Course {
 	}
 
 
-	public int getOrderCount() {
-		return orderCount;
-	}
 
-
-	public void setOrderCount(int orderCount) {
-		this.orderCount = orderCount;
-	}
-	
 	
 
 }

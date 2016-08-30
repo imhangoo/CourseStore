@@ -49,18 +49,22 @@ public class MysqlUserDAO extends MysqlUtil implements UserDAO {
 	}
 
 	@Override
-	public boolean validate(User user) {
+	public User validate(String name, String password) {
 		Connection conn = getConnection();
 		String sql = "SELECT * FROM user where name=? and password=?";
 		PreparedStatement pstmt = getPstmt(conn, sql);
 		ResultSet rs = null;
-		boolean isValid = false;
+		User user = null;
 		try {
-			pstmt.setString(1, user.getName());
-			pstmt.setString(2, user.getPassword());
+			pstmt.setString(1, name);
+			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				isValid = true;
+				user = new User();
+				user.setName(name);
+				user.setId(rs.getInt("id"));
+				user.setDate(rs.getTimestamp("rdate"));
+				user.setEmail(rs.getString("email"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,10 +72,12 @@ public class MysqlUserDAO extends MysqlUtil implements UserDAO {
 			close(pstmt);
 			close(conn);
 		}
+		return user;
 		
-		return isValid;
 		
 	}
+	
+
 
 	@Override
 	public List<User> getUserList() {

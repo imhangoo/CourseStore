@@ -4,32 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-	private List<CartItem> cart;
-
-	public Cart() {
-		cart = new ArrayList<CartItem>();
+	private List<CartItem> items;
+	
+	public void setItems(List<CartItem> items) {
+		this.items = items;
 	}
 
-	public List<CartItem> getCart() {
-		return cart;
+	public Cart() {
+		items = new ArrayList<CartItem>();
+	}
+
+	public List<CartItem> getItems() {
+		return items;
 	}
 
 	public void setCart(List<CartItem> cart) {
-		this.cart = cart;
+		this.items = cart;
 	}
 	
 	public int getSize(){
-		return cart.size();
+		return items.size();
 	}
 	
 	public void add(CartItem item){
-		for(CartItem i:cart){
-			if(item.getCourseID()==i.getCourseID()){
+		for(CartItem i:items){
+			if(item.getCourse().getId()==i.getCourse().getId()){
 				i.add(item.getQuantity());
 				return;
 			}
 		}
-		cart.add(item);
+		items.add(item);
 	}
 	
 	public void checkout(){

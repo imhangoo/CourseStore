@@ -7,7 +7,7 @@ import com.imhangoo.coursestore.DAO.impl.MysqlCourseDAO;
 import com.imhangoo.coursestore.model.Course;
 
 public class CourseManager {
-	public static CourseManager CourseManager = null;
+	public static CourseManager courseManager = null;
 	private CourseDAO dao = null;
 	List<Course> courseList = null;
 	
@@ -17,10 +17,10 @@ public class CourseManager {
 	
 	// Singleton
 	public static CourseManager getInstance(){
-		if(CourseManager==null){
-			CourseManager = new CourseManager();
+		if(courseManager==null){
+			courseManager = new CourseManager();
 		}
-		return CourseManager;
+		return courseManager;
 	}
 	
 	public void save(int id, String name, int category, float price){
@@ -40,6 +40,10 @@ public class CourseManager {
 	
 	public void delete(int id){
 		dao.delete(id);
+	}
+	
+	public Course getCourseById(int id){
+		return dao.getCourseById(id);
 	}
 
 }

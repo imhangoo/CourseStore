@@ -8,6 +8,19 @@ if(cart==null){
 	return;
 }
 %>
+<!-- check if logged in before checkout -->
+<script>
+function beforeCheckout(){
+	var k = "<%=user%>";
+	if(k == "null"){
+		alert("Please login before checkout");
+		return false;
+	}
+	return confirm("Are you ready to make a payment?");
+	
+}
+
+</script>
 <div class="cart-list container">
 	<h2>My Cart List</h2>
 	<table class="table table-bordered table-hover">
@@ -21,17 +34,26 @@ if(cart==null){
       </tr>
     </thead>
     <tbody>
-    <%for(int i = 0; i< cart.getSize(); i++){ %>
+    <% 
+    float total = 0;
+    for(int i = 0; i< cart.getSize(); i++){ 
+        String name = cart.getItems().get(i).getCourse().getName();
+        float price = cart.getItems().get(i).getCourse().getPrice();
+        int qty = cart.getItems().get(i).getQuantity();
+        float subTotal = price * qty;
+        total += subTotal;
+    %>
+    	
       <tr>
-        <td><%=cart.getCart().get(i).getCourseID() %></td>
-        <td>35</td>
-        <td><%=cart.getCart().get(i).getQuantity() %></td>
-        <td>35</td>
+        <td><%=name %></td>
+        <td>$<%=price %></td>
+        <td><%=qty %></td>
+        <td>$<%=subTotal%></td>
         <td>DELETE</td>
       </tr>
       <% }%>
-      <tr><td id="total" colspan="5">Total: $35.6 </td></tr>
-      <tr><td colspan="5"><a href="checkout" class="cart-submit btn btn-md btn-warning">Checkout</a></td></td></tr>
+      <tr><td id="total" colspan="5">Total: $<%=total%> </td></tr>
+      <tr><td colspan="5"><a onclick="return beforeCheckout()" href="checkout" class="cart-submit btn btn-md btn-warning">Checkout</a></td></td></tr>
     </tbody>
   </table>
 	

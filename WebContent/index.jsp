@@ -11,8 +11,8 @@ List<Course> courseList = courseManager.getCourseList();
     <div class="container">
         <h1>Welcome!</h1>
         <p>A course store for programmers, we have a lot of hot courses. Choose your favorite ones, and improve yourself. </p>
-        <p>Test user account: imhangoo,8395</p>
-        <p>Test admin account: admin,admin</p>
+        <p>Test user account: imhangoo,8395 <br>(add products to cart, then you will see "cart" button at top right, click it to checkout)</p>
+        <p>Test admin account: admin,admin  <br>(shopping unavailable under admin mode)</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
     </div>
 </div>

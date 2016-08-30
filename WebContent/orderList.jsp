@@ -3,9 +3,18 @@ pageEncoding="UTF-8"%>
 
 <%@include file="header.jsp"%>
 <%
+OrderManager orderManager = OrderManager.getInstance();
+List<Order> orders = orderManager.getOrdersByUserId(4);
+
  %>
 <div class="cart-list container">
 	<h2>My Orders</h2>
+	<%
+	for(Order order:orders){ 
+	float total = 0;      
+	%>
+	<h4>Order Id: <%=order.getId() %></h4>
+	<h4>Order Time: <%=order.getDate() %></h4>
 	<table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -13,24 +22,25 @@ pageEncoding="UTF-8"%>
         <th>Unit Price</th>
         <th>Quantity</th>
         <th>Sub Total</th>
-        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
-    <%for(int i = 0; i< 10; i++){ %>
+    <%for(OrderItem item:order.getItems()){ 
+    float unitPrice = item.getCourse().getPrice();
+    int qty = item.getQuantity();
+    float subTotal = unitPrice * qty;
+    %>
       <tr>
-        <td>Java for beginners</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>DELETE</td>
+        <td><%=item.getCourse().getName() %></td>
+        <td><%=unitPrice %></td>
+        <td><%=qty %></td>
+        <td><%=subTotal %></td>
       </tr>
-      <% }%>
-      <tr><td id="total" colspan="5">Total: $35.6 </td></tr>
-      <tr><td colspan="5"><a href="cartList.jsp" class="cart-submit btn btn-md btn-warning">Checkout</a></td></td></tr>
+      <% total += subTotal;}%>
+      <tr><td id="total" colspan="5">Total: <%=total %> </td></tr>
     </tbody>
   </table>
-	
+	<%} %>
 </div>
 
 </body>

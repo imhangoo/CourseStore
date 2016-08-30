@@ -1,8 +1,8 @@
 package com.imhangoo.coursestore.model;
 
-public class OrderDetail {
+public class OrderItem {
 	private int orderID;
-	private int courseID;
+	private Course course;
 	private int quantity;
 	
 	public int getOrderID() {
@@ -11,11 +11,11 @@ public class OrderDetail {
 	public void setOrderID(int orderID) {
 		this.orderID = orderID;
 	}
-	public int getCourseID() {
-		return courseID;
+	public Course getCourse() {
+		return course;
 	}
-	public void setCourseID(int courseID) {
-		this.courseID = courseID;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -23,6 +23,7 @@ public class OrderDetail {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
 	
 	
 

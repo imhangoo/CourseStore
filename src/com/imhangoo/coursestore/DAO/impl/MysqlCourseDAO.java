@@ -34,7 +34,7 @@ public class MysqlCourseDAO extends MysqlUtil implements CourseDAO{
 	public List<Course> getCourseList() {
 		List<Course> courseList = new ArrayList<Course>();
 		Connection conn = getConnection();
-		String sql = "SELECT * FROM Course";
+		String sql = "SELECT * FROM course";
 		PreparedStatement pstmt = getPstmt(conn, sql);
 		ResultSet rs = null;
 		try {
@@ -82,5 +82,33 @@ public class MysqlCourseDAO extends MysqlUtil implements CourseDAO{
 			close(pstmt);
 			close(conn);
 		}
+	}
+
+	public Course getCourseById(int id) {
+		Course c = null;
+		Connection conn = getConnection();
+		String sql = "SELECT * FROM course where id = ?";
+		PreparedStatement pstmt = getPstmt(conn, sql);
+		ResultSet rs = null;
+		try {
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				c = new Course();
+				String name = rs.getString("name");
+				int category = rs.getInt("category");
+				float price = rs.getFloat("price");;
+				c.setId(id);
+				c.setName(name);
+				c.setCategory(category);
+				c.setPrice(price);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(conn);
+		}
+		return c;
 	}
 }

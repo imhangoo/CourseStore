@@ -1,13 +1,22 @@
 package com.imhangoo.coursestore.model;
 
+import com.imhangoo.coursestore.service.CourseManager;
+
 public class CartItem {
-	private int courseID;
+	private Course course;
 	private int quantity;
-	public int getCourseID() {
-		return courseID;
+	
+	public CartItem(int courseId, int qty){
+		CourseManager courseManager = CourseManager.getInstance();
+		course = courseManager.getCourseById(courseId);
+		quantity = qty;
+		
 	}
-	public void setCourseID(int courseID) {
-		this.courseID = courseID;
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -15,16 +24,12 @@ public class CartItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	public CartItem(int courseID, int quantity) {
-		super();
-		this.courseID = courseID;
-		this.quantity = quantity;
+	public void add(int qty){
+		quantity+=qty;
 	}
+
 	
-	public void add(int i){
-		quantity+=i;
-	}
+	
 	
 	
 
