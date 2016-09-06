@@ -1,5 +1,6 @@
 # CourseStore
 Techniques used: Jsp, servlet, filter, javabean, jdbc, mysql
+
 Deployed on Amazon AWS - RedHat server.
 
 Demo: http://www.imhangoo.com/CourseStore
